@@ -213,6 +213,19 @@ public class XRControlsManager : MonoBehaviour
         }
     }
 
+    public void SetTeleportationFromDropdown(Dropdown dropdown)
+    {
+        switch (dropdown.value)
+        {
+            case 0:
+                SetTeleportation(false); // OFF
+                break;
+            default:
+                SetTeleportation(true); // ON
+                break;
+        }
+    }
+
     #endregion
 }
 
@@ -236,3 +249,4 @@ public static class XRControlsDefaultsCache
         HasCached = true;
     }
 }
+
