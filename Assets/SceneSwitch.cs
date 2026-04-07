@@ -7,6 +7,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void SwitchScene()
     {
+        Debug.Log("Button clicked, loading: " + sceneName);
         SceneManager.LoadScene(sceneName);
     }
 }
