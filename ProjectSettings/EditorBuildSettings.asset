@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/SCENE 3 - Interactive.unity
+    path: Assets/_Scenes/SCENE 4 - Interactive.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
     path: Assets/Pre-College/Scenes/Barebones.unity
@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Pre-College/Scenes/Jellyfishin.unity
     guid: 8ac17d7c51745bf419552a37a56e09d2
   - enabled: 1
-    path: Assets/_Scenes/Scene 0 - Main Menu.unity
+    path: Assets/_Scenes/SCENE 0 - Main Menu.unity
     guid: fce8820b9c1f33541b5938c3e576e5bf
+  - enabled: 1
+    path: Assets/_Scenes/SCENE 5 - Archive.unity
+    guid: 9a485ceeaa933da4bac9173c3774d4b5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8ffb108b987104147917175d716a4b26, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
