@@ -24143,7 +24143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006e0108684e6ea49afd0893f1733e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SCENE 3 - Interactive
+  sceneName: SCENE 2 - Cat Tutorial
 --- !u!114 &1985277220
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/SCENE 5 - Archive.unity
     guid: 9a485ceeaa933da4bac9173c3774d4b5
+  - enabled: 1
+    path: Assets/_Scenes/SCENE 2 - Cat Tutorial.unity
+    guid: 3ae61c966b8fa41cfaa614814521b3f0
+  - enabled: 1
+    path: Assets/_Scenes/SCENE 3 - Dog Tutorial.unity
+    guid: 84c07d0d55e814dff8f8cb7433d99759
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8ffb108b987104147917175d716a4b26, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
