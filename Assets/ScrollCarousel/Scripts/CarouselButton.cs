@@ -23,15 +23,12 @@ namespace ScrollCarousel
 
         public override void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
         {
-            if (isFocused)
-            {
-                base.OnPointerClick(eventData);
-                buttonAction?.Invoke();
-            }
-            else 
+            if (carousel != null)
             {
                 carousel.FocusItem(this.GetComponent<RectTransform>());
             }
+
+            base.OnPointerClick(eventData);
         }
 
         public void SetFocus(bool focus)
