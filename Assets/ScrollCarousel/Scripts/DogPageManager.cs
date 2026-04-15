@@ -4,6 +4,8 @@ using TMPro;
 
 public class DogPageManager : MonoBehaviour
 {
+    public GameObject dogInfoPanel;
+
     public TMP_Text dogNameText;
     public TMP_Text dogDescriptionText;
     public Image dogImage;
@@ -16,8 +18,14 @@ public class DogPageManager : MonoBehaviour
     [TextArea] public string pleasedDescription;
     [TextArea] public string scaredDescription;
 
+    private void Start()
+    {
+        dogInfoPanel.SetActive(false);
+    }
+
     public void ShowAggressiveDog()
     {
+        dogInfoPanel.SetActive(true);
         dogNameText.text = "Aggressive Dog";
         dogDescriptionText.text = aggressiveDescription;
         dogImage.sprite = aggressiveDogSprite;
@@ -25,6 +33,7 @@ public class DogPageManager : MonoBehaviour
 
     public void ShowPleasedDog()
     {
+        dogInfoPanel.SetActive(true);
         dogNameText.text = "Pleased Dog";
         dogDescriptionText.text = pleasedDescription;
         dogImage.sprite = pleasedDogSprite;
@@ -32,8 +41,14 @@ public class DogPageManager : MonoBehaviour
 
     public void ShowScaredDog()
     {
+        dogInfoPanel.SetActive(true);
         dogNameText.text = "Scared Dog";
         dogDescriptionText.text = scaredDescription;
         dogImage.sprite = scaredDogSprite;
+    }
+
+    public void ClosePanel()
+    {
+        dogInfoPanel.SetActive(false);
     }
 }
