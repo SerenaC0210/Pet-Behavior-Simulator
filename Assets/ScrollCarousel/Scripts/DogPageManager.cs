@@ -4,6 +4,10 @@ using TMPro;
 
 public class DogPageManager : MonoBehaviour
 {
+    public GameObject background;
+    public GameObject title;
+    public GameObject carousel;
+    public GameObject footer;
     public GameObject dogInfoPanel;
 
     public TMP_Text dogNameText;
@@ -23,9 +27,19 @@ public class DogPageManager : MonoBehaviour
         dogInfoPanel.SetActive(false);
     }
 
+    private void ShowInfoPanel()
+    {
+        background.SetActive(false);
+        title.SetActive(false);
+        carousel.SetActive(false);
+        footer.SetActive(false);
+
+        dogInfoPanel.SetActive(true);
+    }
+
     public void ShowAggressiveDog()
     {
-        dogInfoPanel.SetActive(true);
+        ShowInfoPanel();
         dogNameText.text = "Aggressive Dog";
         dogDescriptionText.text = aggressiveDescription;
         dogImage.sprite = aggressiveDogSprite;
@@ -33,7 +47,7 @@ public class DogPageManager : MonoBehaviour
 
     public void ShowPleasedDog()
     {
-        dogInfoPanel.SetActive(true);
+        ShowInfoPanel();
         dogNameText.text = "Pleased Dog";
         dogDescriptionText.text = pleasedDescription;
         dogImage.sprite = pleasedDogSprite;
@@ -41,14 +55,19 @@ public class DogPageManager : MonoBehaviour
 
     public void ShowScaredDog()
     {
-        dogInfoPanel.SetActive(true);
+        ShowInfoPanel();
         dogNameText.text = "Scared Dog";
         dogDescriptionText.text = scaredDescription;
         dogImage.sprite = scaredDogSprite;
     }
 
-    public void ClosePanel()
+    public void BackToMenu()
     {
         dogInfoPanel.SetActive(false);
+
+        background.SetActive(true);
+        title.SetActive(true);
+        carousel.SetActive(true);
+        footer.SetActive(true);
     }
 }

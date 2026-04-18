@@ -27,7 +27,6 @@ namespace ScrollCarousel.Demo
 
         public void ToggleCarouselMode()
         {
-            _carousel.InfiniteScroll = _toggle.isOn;
             _carousel.ForceUpdate();
         }
     }
