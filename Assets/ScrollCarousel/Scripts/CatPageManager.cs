@@ -4,6 +4,10 @@ using TMPro;
 
 public class CatPageManager : MonoBehaviour
 {
+    public GameObject background;
+    public GameObject title;
+    public GameObject carousel;
+    public GameObject footer;
     public GameObject catInfoPanel;
 
     public TMP_Text catNameText;
@@ -23,9 +27,19 @@ public class CatPageManager : MonoBehaviour
         catInfoPanel.SetActive(false);
     }
 
+    private void ShowInfoPanel()
+    {
+        background.SetActive(false);
+        title.SetActive(false);
+        carousel.SetActive(false);
+        footer.SetActive(false);
+
+        catInfoPanel.SetActive(true);
+    }
+
     public void ShowAggressiveCat()
     {
-        catInfoPanel.SetActive(true);
+        ShowInfoPanel();
         catNameText.text = "Aggressive Cat";
         catDescriptionText.text = aggressiveDescription;
         catImage.sprite = aggressiveCatSprite;
@@ -33,7 +47,7 @@ public class CatPageManager : MonoBehaviour
 
     public void ShowPleasedCat()
     {
-        catInfoPanel.SetActive(true);
+        ShowInfoPanel();
         catNameText.text = "Pleased Cat";
         catDescriptionText.text = pleasedDescription;
         catImage.sprite = pleasedCatSprite;
@@ -41,14 +55,19 @@ public class CatPageManager : MonoBehaviour
 
     public void ShowScaredCat()
     {
-        catInfoPanel.SetActive(true);
+        ShowInfoPanel();
         catNameText.text = "Scared Cat";
         catDescriptionText.text = scaredDescription;
         catImage.sprite = scaredCatSprite;
     }
 
-    public void ClosePanel()
+    public void BackToMenu()
     {
         catInfoPanel.SetActive(false);
+
+        background.SetActive(true);
+        title.SetActive(true);
+        carousel.SetActive(true);
+        footer.SetActive(true);
     }
 }
