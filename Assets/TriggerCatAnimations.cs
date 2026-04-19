@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using Random = UnityEngine.Random;
@@ -11,11 +12,64 @@ public class TriggerCatAnimations : MonoBehaviour
     public Animator catAnimator;
     private string catState;
     private enum CatMood { Idle, Irritated, Scared, Relaxed }
-    private CatMood currentMood;
+    private CatMood[] currMoods;
+    private int currentSession = 0;
+    private bool isPet = false;
+    public GameObject sessionCompleteUI;
+    public Text responseText;
+    private CatMood lastMood;
 
     private void Start()
     {
-        initializeState();
+        currMoods = generateMoods();
+    }
+    private CatMood[] generateMoods()
+    {
+        CatMood[] allMoods = { CatMood.Irritated, CatMood.Scared, CatMood.Relaxed };
+        for (int i = allMoods.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (allMoods[i], allMoods[j]) = (allMoods[j], allMoods[i]);
+        }
+        return allMoods;
+    }
+    private void triggerMood(CatMood mood)
+    {
+        switch (mood)
+        {
+            case CatMood.Irritated: triggerIrritated(); break;
+            case CatMood.Scared: triggerScared(); break;
+            case CatMood.Relaxed: triggerRelaxed(); break;
+        }
+    }
+    public void StartNextSession()
+    {
+        sessionCompleteUI.SetActive(false);
+        if (currentSession >= currMoods.Length)
+        {
+            Debug.Log("All sessions complete");
+            return;
+        }
+
+        CatMood mood = currMoods[currentSession];
+        lastMood = currMoods[currentSession];
+        currentSession++;
+
+        Debug.Log($"Session {currentSession} - Mood: {mood}");
+        triggerMood(mood);
+    }
+
+    public void detectTouch()
+    {
+        isPet = true;
+        string message = lastMood switch
+        {
+            CatMood.Irritated => "cat was irritated",
+            CatMood.Scared => "cat was scared",
+            CatMood.Relaxed => "cat was relaxed"
+        };
+        responseText.text = message;
+        sessionCompleteUI.SetActive(true);
     }
     private void triggerAnimation(string newState, float crossfade = 0.4f, int layer = 1)
     {
@@ -73,22 +127,4 @@ public class TriggerCatAnimations : MonoBehaviour
         triggerAnimation("base_ears", 0.4f, 2);
     }
 
-    private void initializeState()
-    {
-        CatMood[] moods = { CatMood.Idle, CatMood.Irritated, CatMood.Scared, CatMood.Relaxed };
-        currentMood = moods[Random.Range(0, moods.Length)];
-
-        switch (currentMood)
-        {
-            case CatMood.Idle: resetAnimation(); break;
-            case CatMood.Irritated: triggerIrritated(); break;
-            case CatMood.Scared: triggerScared(); break;
-            case CatMood.Relaxed: triggerRelaxed(); break;
-        }
-    }
-
-    public void checkTouch()
-    {
-
-    }
 }
