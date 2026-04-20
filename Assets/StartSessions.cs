@@ -6,11 +6,11 @@ public class StartSessions : MonoBehaviour
     public Animator dogAnimator;
     public GameObject animalSelectUI;
     public bool isDog;
-    public GameObject sessionCompleteUI;
+    public GameObject catSessionUI;
     void Start()
     {
         animalSelectUI.SetActive(true);
-        sessionCompleteUI.SetActive(false);
+        catSessionUI.SetActive(false);
         if (catAnimator) catAnimator.gameObject.SetActive(false);
         if (dogAnimator) dogAnimator.gameObject.SetActive(false);
     }
@@ -20,6 +20,7 @@ public class StartSessions : MonoBehaviour
         catAnimator.gameObject.SetActive(true);
         dogAnimator.gameObject.SetActive(false);
         animalSelectUI.SetActive(false);
+        catSessionUI.SetActive(true);
     }
 
     public void ChooseDog()
@@ -27,17 +28,14 @@ public class StartSessions : MonoBehaviour
         dogAnimator.gameObject.SetActive(true);
         catAnimator.gameObject.SetActive(false);
         animalSelectUI.SetActive(false);
+        catSessionUI.SetActive(false);
     }
     
     public void restart()
     {
         animalSelectUI.SetActive(true);
+        catSessionUI.SetActive(false);
         if (catAnimator) catAnimator.gameObject.SetActive(false);
         if (dogAnimator) dogAnimator.gameObject.SetActive(false);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -11,18 +11,23 @@ public class TriggerCatAnimations : MonoBehaviour
 {
     public Animator catAnimator;
     private string catState;
-    private enum CatMood { Idle, Irritated, Scared, Relaxed }
+    private enum CatMood {Irritated, Scared, Relaxed}
     private CatMood[] currMoods;
+    private string[] layerStates = new string[3];
     private int currentSession = 0;
     private bool isPet = false;
-    public GameObject sessionCompleteUI;
+    public GameObject sessionUI;
+    public GameObject animalSelectUI;
     public Text responseText;
+    public Text sessionText;
     private CatMood lastMood;
 
     private void Start()
     {
+        triggerIdle();
         currMoods = generateMoods();
     }
+
     private CatMood[] generateMoods()
     {
         CatMood[] allMoods = { CatMood.Irritated, CatMood.Scared, CatMood.Relaxed };
@@ -42,25 +47,50 @@ public class TriggerCatAnimations : MonoBehaviour
             case CatMood.Relaxed: triggerRelaxed(); break;
         }
     }
-    public void StartNextSession()
+
+    public void OnContinuePressed()
     {
-        sessionCompleteUI.SetActive(false);
         if (currentSession >= currMoods.Length)
         {
-            Debug.Log("All sessions complete");
+            RestartSessions();
+            animalSelectUI.SetActive(true);
+            sessionUI.SetActive(false);
+            if (catAnimator) catAnimator.gameObject.SetActive(false);
+        }
+        else
+        {
+            StartNextSession();
+        }
+    }
+
+    public void StartNextSession()
+    {
+        if (currentSession >= currMoods.Length)
+        {
+            responseText.text = "All sessions complete!";
             return;
         }
 
         CatMood mood = currMoods[currentSession];
         lastMood = currMoods[currentSession];
         currentSession++;
+        setSessionText();
 
         Debug.Log($"Session {currentSession} - Mood: {mood}");
         triggerMood(mood);
     }
 
+    public void setSessionText()
+    {
+        sessionText.text = "Session " + currentSession;
+    }
+
     public void detectTouch()
     {
+        if (currentSession >= currMoods.Length)
+        {
+            return;
+        }
         isPet = true;
         string message = lastMood switch
         {
@@ -69,34 +99,22 @@ public class TriggerCatAnimations : MonoBehaviour
             CatMood.Relaxed => "cat was relaxed"
         };
         responseText.text = message;
-        sessionCompleteUI.SetActive(true);
+        sessionUI.SetActive(true);
     }
-    private void triggerAnimation(string newState, float crossfade = 0.4f, int layer = 1)
+
+    public void RestartSessions()
     {
-        if (catState != newState)
+        currentSession = 0;
+        currMoods = generateMoods();
+        triggerIdle();
+    }
+
+    private void triggerAnimation(string newState, float crossfade = 0.4f, int layer = 0)
+    {
+        if (layerStates[layer] != newState)
         {
-            catState = newState;
+            layerStates[layer] = newState;
             catAnimator.CrossFade(newState, crossfade, layer);
-        }
-    } 
-    void Update()
-    {
-        if (Keyboard.current.digit0Key.wasPressedThisFrame)
-        {
-            resetAnimation();
-        }
-        else if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            triggerIrritated();
-        }
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            triggerScared();
-        }
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            triggerAnimation("tail_up_relaxed", 0.4f, 1);
-            triggerRelaxed();
         }
     }
 
@@ -107,7 +125,7 @@ public class TriggerCatAnimations : MonoBehaviour
         triggerAnimation("base_back", 0.4f, 0);
     }
 
-    public void resetAnimation()
+    public void triggerIdle()
     {
         triggerAnimation("idle", 0.4f, 1);
         triggerAnimation("base_back", 0.4f, 0);
@@ -122,7 +140,14 @@ public class TriggerCatAnimations : MonoBehaviour
 
     public void triggerRelaxed()
     {
-        triggerAnimation("tail_relaxed_idle", 0.4f, 1);
+        triggerAnimation("tail_up_relaxed", 0.4f, 1);
+        triggerAnimation("base_back", 0.4f, 0);
+        triggerAnimation("base_ears", 0.4f, 2);
+    }
+
+    public void resetAnimation()
+    {
+        triggerAnimation("base_tail", 0.4f, 1);
         triggerAnimation("base_back", 0.4f, 0);
         triggerAnimation("base_ears", 0.4f, 2);
     }
