@@ -11,7 +11,7 @@ public class TriggerCatAnimations : MonoBehaviour
 {
     public Animator catAnimator;
     private string catState;
-    private enum CatMood {Irritated, Scared, Relaxed}
+    private enum CatMood { Irritated, Scared, Relaxed }
     private CatMood[] currMoods;
     private string[] layerStates = new string[3];
     private int currentSession = 0;
@@ -22,10 +22,54 @@ public class TriggerCatAnimations : MonoBehaviour
     public Text sessionText;
     private CatMood lastMood;
 
+    public Text timerText;
+    public float sessionDuration = 10f;
+    private float timeRemaining;
+    private bool timerRunning = false;
+
     private void Start()
     {
         triggerIdle();
         currMoods = generateMoods();
+    }
+
+    private void Update()
+    {
+        if (timerRunning)
+        {
+            timeRemaining -= Time.deltaTime;
+
+            if (timeRemaining <= 0)
+            {
+                timeRemaining = 0;
+                timerRunning = false;
+                onTimerEnd();
+            }
+
+            updateTimerText();
+        }
+    }
+
+    private void updateTimerText()
+    {
+        int seconds = Mathf.CeilToInt(timeRemaining);
+        timerText.text = "Session time: " + seconds.ToString(); 
+    }
+
+    private void startTimer()
+    {
+        timeRemaining = sessionDuration;
+        timerRunning = true;
+    }
+
+    private void stopTimer()
+    {
+        timerRunning = false;
+    }
+
+    private void onTimerEnd()
+    {
+        detectTouch();
     }
 
     private CatMood[] generateMoods()
@@ -65,6 +109,7 @@ public class TriggerCatAnimations : MonoBehaviour
 
     public void StartNextSession()
     {
+        isPet = false;
         if (currentSession >= currMoods.Length)
         {
             responseText.text = "All sessions complete!";
@@ -78,6 +123,12 @@ public class TriggerCatAnimations : MonoBehaviour
 
         Debug.Log($"Session {currentSession} - Mood: {mood}");
         triggerMood(mood);
+        startTimer();
+    }
+
+    public void setIsPet()
+    {
+        isPet = true;
     }
 
     public void setSessionText()
@@ -87,23 +138,51 @@ public class TriggerCatAnimations : MonoBehaviour
 
     public void detectTouch()
     {
-        if (currentSession >= currMoods.Length)
+        if (isPet)
         {
+            stopTimer();
             return;
         }
+
         isPet = true;
-        string message = lastMood switch
+        stopTimer();
+
+        string message = "";
+        if (lastMood == CatMood.Irritated)
         {
-            CatMood.Irritated => "cat was irritated",
-            CatMood.Scared => "cat was scared",
-            CatMood.Relaxed => "cat was relaxed"
-        };
-        responseText.text = message;
+            if (timeRemaining <= 0 || timerRunning == false)
+            {
+                message = "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
+            }
+            else
+            {
+                message = "A cat's ears flattening indicates fear/anger. A swishing tail also indicates a cat is irritated, so you shouldn't pet it.";
+            }
+        }
+        else if (lastMood == CatMood.Relaxed) {
+            message = "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!";
+        
+        }
+
+        else if (lastMood == CatMood.Scared)
+        {
+            if (timeRemaining <= 0 || timerRunning == false)
+            {
+                message = "Correct! A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats.";
+            }
+            else
+            {
+                message = "A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats.";
+            }
+        }
+
+            responseText.text = message;
         sessionUI.SetActive(true);
     }
 
     public void RestartSessions()
     {
+        isPet = false;
         currentSession = 0;
         currMoods = generateMoods();
         triggerIdle();
