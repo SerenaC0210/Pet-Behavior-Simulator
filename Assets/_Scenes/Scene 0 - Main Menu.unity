@@ -1806,7 +1806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 274202773291399860, guid: bb874215eb715e145b8f0028f6048a91, type: 3}
       propertyPath: m_Text
-      value: The application was developed by Minh Nguyen, Yuting and Serana for
+      value: The application was developed by Minh Nguyen, Yuting and Serena for
         CSC 216/416
       objectReference: {fileID: 0}
     - target: {fileID: 1636164155763283517, guid: bb874215eb715e145b8f0028f6048a91, type: 3}
