@@ -21,6 +21,7 @@ public class TriggerCatAnimations : MonoBehaviour
     public Text responseText;
     public Text sessionText;
     private CatMood lastMood;
+    public Button contButton;
 
     public Text timerText;
     public float sessionDuration = 10f;
@@ -103,7 +104,12 @@ public class TriggerCatAnimations : MonoBehaviour
         }
         else
         {
+            responseText.text = "Do/don't interact with the cat based on its body language.";
             StartNextSession();
+        }
+        if (timerRunning)
+        {
+            contButton.interactable = false;
         }
     }
 
@@ -141,11 +147,13 @@ public class TriggerCatAnimations : MonoBehaviour
         if (isPet)
         {
             stopTimer();
+            contButton.interactable = true;
             return;
         }
 
         isPet = true;
         stopTimer();
+        contButton.interactable = true;
 
         string message = "";
         if (lastMood == CatMood.Irritated)
@@ -176,7 +184,7 @@ public class TriggerCatAnimations : MonoBehaviour
             }
         }
 
-            responseText.text = message;
+        responseText.text = message;
         sessionUI.SetActive(true);
     }
 
