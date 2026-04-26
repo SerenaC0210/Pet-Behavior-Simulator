@@ -153,6 +153,7 @@ public class TriggerDogAnimations : MonoBehaviour
         if (isPet)
         {
             stopTimer();
+            timerText.text = "Session time: 0";
             contButton.interactable = true;
             return;
         }
@@ -176,11 +177,11 @@ public class TriggerDogAnimations : MonoBehaviour
         {
             if (timeRemaining <= 0 || timerRunning == false)
             {
-                message = "Correct! A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs or they might have an aggressive reacton.";
+                message = "Correct! A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
             }
             else
             {
-                message = "A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs or they might have an aggressive reacton.";
+                message = "A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
             }
         }
 

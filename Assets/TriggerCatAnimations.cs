@@ -147,6 +147,7 @@ public class TriggerCatAnimations : MonoBehaviour
         if (isPet)
         {
             stopTimer();
+            timerText.text = "Session time: 0";
             contButton.interactable = true;
             return;
         }
