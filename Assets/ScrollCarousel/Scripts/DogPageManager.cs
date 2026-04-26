@@ -9,6 +9,9 @@ public class DogPageManager : MonoBehaviour
     public GameObject carousel;
     public GameObject dogInfoPanel;
 
+    [Header("Main Menu Hint Text")]
+    public GameObject exitHintText; // <-- NEW
+
     public TMP_Text dogNameText;
     public TMP_Text dogDescriptionText;
 
@@ -34,6 +37,7 @@ public class DogPageManager : MonoBehaviour
     private void Start()
     {
         dogInfoPanel.SetActive(false);
+        exitHintText.SetActive(true);
     }
 
     private void ShowInfoPanel()
@@ -42,6 +46,7 @@ public class DogPageManager : MonoBehaviour
         title.SetActive(false);
         carousel.SetActive(false);
 
+        exitHintText.SetActive(false);
         dogInfoPanel.SetActive(true);
     }
 
@@ -85,5 +90,7 @@ public class DogPageManager : MonoBehaviour
         background.SetActive(true);
         title.SetActive(true);
         carousel.SetActive(true);
+
+        exitHintText.SetActive(true);
     }
 }

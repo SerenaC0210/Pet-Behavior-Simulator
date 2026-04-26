@@ -9,6 +9,9 @@ public class CatPageManager : MonoBehaviour
     public GameObject carousel;
     public GameObject catInfoPanel;
 
+    [Header("Main Menu Hint Text")]
+    public GameObject exitHintText; // <-- NEW
+
     public TMP_Text catNameText;
     public TMP_Text catDescriptionText;
 
@@ -34,6 +37,7 @@ public class CatPageManager : MonoBehaviour
     private void Start()
     {
         catInfoPanel.SetActive(false);
+        exitHintText.SetActive(true); // show on main menu
     }
 
     private void ShowInfoPanel()
@@ -42,6 +46,7 @@ public class CatPageManager : MonoBehaviour
         title.SetActive(false);
         carousel.SetActive(false);
 
+        exitHintText.SetActive(false); // hide when entering info panel
         catInfoPanel.SetActive(true);
     }
 
@@ -85,5 +90,7 @@ public class CatPageManager : MonoBehaviour
         background.SetActive(true);
         title.SetActive(true);
         carousel.SetActive(true);
+
+        exitHintText.SetActive(true); // show again on return
     }
 }
