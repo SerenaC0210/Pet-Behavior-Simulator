@@ -745,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carousel
       objectReference: {fileID: 0}
+    - target: {fileID: 7814514810884693901, guid: c9d56ee766801cf41846b4baba974055, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8610953542971450012, guid: c9d56ee766801cf41846b4baba974055, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -991,10 +995,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1796887205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 961.0188, y: 0}
+  m_SizeDelta: {x: 736.18, y: 139.65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &431980280
 MonoBehaviour:
@@ -1200,7 +1204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &523200193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3036,7 +3040,7 @@ MonoBehaviour:
   catNameText: {fileID: 585736350}
   catDescriptionText: {fileID: 1760388682}
   catImage: {fileID: 2099151067}
-  aggressiveCatSprite: {fileID: 21300000, guid: f6d1c78386c0845ecb2a21f40580c270, type: 3}
+  aggressiveCatSprite: {fileID: 21300000, guid: 7730ca139a0c2434081a550674c413b1, type: 3}
   pleasedCatSprite: {fileID: 21300000, guid: ff3178765627649bc88b357ff8a195e7, type: 3}
   scaredCatSprite: {fileID: 21300000, guid: 6a046340c2c4646d294deb37b2397ff9, type: 3}
   aggressiveDescription: Aggressive cats exhibit distinct behavioral warning signs,
@@ -3220,7 +3224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1796887205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3239,7 +3243,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -65}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 139.65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1796887206
 MonoBehaviour:
@@ -3550,7 +3554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1936454675
 RectTransform:
   m_ObjectHideFlags: 0
