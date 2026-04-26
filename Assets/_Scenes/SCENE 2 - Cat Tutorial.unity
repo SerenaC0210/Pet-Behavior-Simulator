@@ -1221,6 +1221,7 @@ RectTransform:
   - {fileID: 1760388684}
   - {fileID: 2099151069}
   - {fileID: 1009412572}
+  - {fileID: 1076108272}
   m_Father: {fileID: 861252512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2581,6 +2582,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009412571}
   m_CullTransparentMesh: 1
+--- !u!1 &1076108269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076108272}
+  - component: {fileID: 1076108271}
+  - component: {fileID: 1076108270}
+  m_Layer: 0
+  m_Name: CatImage2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1076108270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076108269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1076108271
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076108269}
+  m_CullTransparentMesh: 1
+--- !u!224 &1076108272
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076108269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.731767, y: 2.813083, z: 4.731767}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 523200193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -635, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1176774815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7814514810884693901, guid: c9d56ee766801cf41846b4baba974055, type: 3}
@@ -3039,18 +3115,27 @@ MonoBehaviour:
   catInfoPanel: {fileID: 523200192}
   catNameText: {fileID: 585736350}
   catDescriptionText: {fileID: 1760388682}
-  catImage: {fileID: 2099151067}
-  aggressiveCatSprite: {fileID: 21300000, guid: 7730ca139a0c2434081a550674c413b1, type: 3}
-  pleasedCatSprite: {fileID: 21300000, guid: ff3178765627649bc88b357ff8a195e7, type: 3}
-  scaredCatSprite: {fileID: 21300000, guid: 6a046340c2c4646d294deb37b2397ff9, type: 3}
-  aggressiveDescription: Aggressive cats exhibit distinct behavioral warning signs,
-    including flattened ears, dilated pupils, tense body posture, a twitching tail,
-    and low, menacing sounds like growling, hissing, or spitting.
-  pleasedDescription: A happy cat is often characterized by a relaxed body, upright
-    tail with a slight hook, and vocalizations like purring or chirping.
-  scaredDescription: A scared cat typically displays physical signs like dilated
-    pupils, flattened ears, a tucked tail, and a low-crouched or, conversely, a puffed-up,
-    arched-back posture.
+  catImage1: {fileID: 2099151067}
+  catImage2: {fileID: 1076108270}
+  aggressiveCatSprite1: {fileID: 21300000, guid: 7730ca139a0c2434081a550674c413b1, type: 3}
+  aggressiveCatSprite2: {fileID: 21300000, guid: c764a1bb204014f3b92670c0710a3353, type: 3}
+  pleasedCatSprite1: {fileID: 21300000, guid: a0370ff4ed8854431bab168952f9f234, type: 3}
+  pleasedCatSprite2: {fileID: 21300000, guid: 7e3d2d5cc33264fd5a9e68301a08caf3, type: 3}
+  scaredCatSprite1: {fileID: 21300000, guid: c764a1bb204014f3b92670c0710a3353, type: 3}
+  scaredCatSprite2: {fileID: 0}
+  aggressiveDescription: Aggressive cats exhibit warning signs such as flattened
+    ears, dilated pupils, a tense body, a twitching tail, and sounds like growling,
+    hissing, or spitting. Do not attempt to pet or approach an aggressive cat. Give
+    the cat plenty of space and allow it to calm down on its own. Trying to interact
+    may result in scratches or bites.
+  pleasedDescription: A pleased cat typically has a relaxed body, an upright tail
+    with a slight hook, and may purr or chirp. This is usually a great time to interact.
+    Gentle petting, especially around the head, cheeks, and chin, is often welcome.
+    Always approach calmly and let the cat choose to engage.
+  scaredDescription: A scared cat may have dilated pupils, flattened ears, a tucked
+    tail, and either crouch low or puff up with an arched back. Avoid petting or
+    picking up a frightened cat. Give it space, speak softly, and allow it to retreat
+    to a safe place. Wait for the cat to approach you when it feels comfortable.
 --- !u!224 &1722623740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3703,7 +3788,7 @@ GameObject:
   - component: {fileID: 2099151068}
   - component: {fileID: 2099151067}
   m_Layer: 0
-  m_Name: CatImage
+  m_Name: CatImage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3756,14 +3841,14 @@ RectTransform:
   m_GameObject: {fileID: 2099151066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.731767, y: 4.731767, z: 4.731767}
+  m_LocalScale: {x: 4.731767, y: 2.813083, z: 4.731767}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 523200193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -636, y: 36}
+  m_AnchoredPosition: {x: -636, y: 149}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2140172374
