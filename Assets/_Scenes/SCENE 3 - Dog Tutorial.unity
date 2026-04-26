@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.7058824, b: 1, a: 1}
+  m_Color: {r: 0.39607844, g: 0.52156866, b: 0.6313726, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2889,12 +2889,12 @@ MonoBehaviour:
   dogDescriptionText: {fileID: 600870707}
   dogImage1: {fileID: 486046441}
   dogImage2: {fileID: 1787034311}
-  aggressiveDogSprite1: {fileID: 0}
-  aggressiveDogSprite2: {fileID: 0}
-  pleasedDogSprite1: {fileID: 0}
-  pleasedDogSprite2: {fileID: 0}
-  scaredDogSprite1: {fileID: 0}
-  scaredDogSprite2: {fileID: 0}
+  aggressiveDogSprite1: {fileID: 21300000, guid: b6a94c4c66b8d42da82936291941f78a, type: 3}
+  aggressiveDogSprite2: {fileID: 21300000, guid: 20c43c53abb584324982b67a7360c1b9, type: 3}
+  pleasedDogSprite1: {fileID: 21300000, guid: ff01347f14ed441e3b6c317a8549ba1f, type: 3}
+  pleasedDogSprite2: {fileID: 21300000, guid: e420fe5ae113e4d9fafc7d86e98c3bb3, type: 3}
+  scaredDogSprite1: {fileID: 21300000, guid: 20c43c53abb584324982b67a7360c1b9, type: 3}
+  scaredDogSprite2: {fileID: 21300000, guid: 46900973625444de7a46edb595634a9d, type: 3}
   aggressiveDescription: Aggressive dogs display warning signs such as a stiff, forward-leaning
     posture, raised hackles, intense staring, bared teeth, and ears pinned back or
     rigidly forward. Do not attempt to pet or approach an aggressive dog. Remain

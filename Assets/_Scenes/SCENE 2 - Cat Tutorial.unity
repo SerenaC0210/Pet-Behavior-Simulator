@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.70560044, b: 1, a: 1}
+  m_Color: {r: 0.39607844, g: 0.52156866, b: 0.6313726, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3122,7 +3122,7 @@ MonoBehaviour:
   pleasedCatSprite1: {fileID: 21300000, guid: a0370ff4ed8854431bab168952f9f234, type: 3}
   pleasedCatSprite2: {fileID: 21300000, guid: 7e3d2d5cc33264fd5a9e68301a08caf3, type: 3}
   scaredCatSprite1: {fileID: 21300000, guid: c764a1bb204014f3b92670c0710a3353, type: 3}
-  scaredCatSprite2: {fileID: 0}
+  scaredCatSprite2: {fileID: 21300000, guid: f77a61ef1b7e5422182640c5e4154101, type: 3}
   aggressiveDescription: Aggressive cats exhibit warning signs such as flattened
     ears, dilated pupils, a tense body, a twitching tail, and sounds like growling,
     hissing, or spitting. Do not attempt to pet or approach an aggressive cat. Give
