@@ -154,7 +154,6 @@ public class TriggerCatAnimations : MonoBehaviour
 
         isPet = true;
         stopTimer();
-        contButton.interactable = true;
 
         string message = "";
         if (lastMood == CatMood.Irritated)
@@ -166,6 +165,7 @@ public class TriggerCatAnimations : MonoBehaviour
             else
             {
                 message = "A cat's ears flattening indicates fear/anger. A swishing tail also indicates a cat is irritated, so you shouldn't pet it.";
+                timerText.text = "Session time: 0";
             }
         }
         else if (lastMood == CatMood.Relaxed) {
@@ -185,6 +185,7 @@ public class TriggerCatAnimations : MonoBehaviour
             }
         }
 
+        contButton.interactable = true;
         responseText.text = message;
         sessionUI.SetActive(true);
     }

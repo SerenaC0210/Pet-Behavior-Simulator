@@ -160,7 +160,7 @@ public class TriggerDogAnimations : MonoBehaviour
 
         isPet = true;
         stopTimer();
-        contButton.interactable = true;
+        
 
         string message = "";
         if (lastMood == DogMood.Alert)
@@ -184,7 +184,7 @@ public class TriggerDogAnimations : MonoBehaviour
                 message = "A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
             }
         }
-
+        contButton.interactable = true;
         responseText.text = message;
         sessionUI.SetActive(true);
     }
