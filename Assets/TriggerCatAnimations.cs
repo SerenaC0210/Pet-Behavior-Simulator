@@ -193,7 +193,7 @@ public class TriggerCatAnimations : MonoBehaviour
         isPet = false;
         currentSession = 0;
         currMoods = generateMoods();
-        triggerIdle();
+        resetAnimation();
     }
 
     private void triggerAnimation(string newState, float crossfade = 0.4f, int layer = 0)
