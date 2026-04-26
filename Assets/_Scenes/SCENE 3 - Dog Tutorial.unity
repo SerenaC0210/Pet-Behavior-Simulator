@@ -1156,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carousel
       objectReference: {fileID: 0}
+    - target: {fileID: 7814514810884693901, guid: c9d56ee766801cf41846b4baba974055, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8610953542971450012, guid: c9d56ee766801cf41846b4baba974055, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1546,7 +1550,7 @@ GameObject:
   - component: {fileID: 486046442}
   - component: {fileID: 486046441}
   m_Layer: 0
-  m_Name: DogImage
+  m_Name: DogImage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1599,14 +1603,14 @@ RectTransform:
   m_GameObject: {fileID: 486046440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.779988, y: 4.779988, z: 4.779988}
+  m_LocalScale: {x: 4.779988, y: 2.859819, z: 4.779988}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 950017501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.74529177, y: 0.5}
-  m_AnchoredPosition: {x: -877, y: 56}
+  m_AnchoredPosition: {x: -877, y: 129}
   m_SizeDelta: {x: -371, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &526729802
@@ -2069,6 +2073,7 @@ RectTransform:
   - {fileID: 600870705}
   - {fileID: 486046443}
   - {fileID: 1191623076}
+  - {fileID: 1787034310}
   m_Father: {fileID: 81463598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2882,21 +2887,28 @@ MonoBehaviour:
   dogInfoPanel: {fileID: 950017500}
   dogNameText: {fileID: 1612729412}
   dogDescriptionText: {fileID: 600870707}
-  dogImage: {fileID: 486046441}
-  aggressiveDogSprite: {fileID: 21300000, guid: b370739a5e1264591b542bdf86788b83, type: 3}
-  pleasedDogSprite: {fileID: 21300000, guid: 1f3c8e5e7db4f44499d44bf0c69335e7, type: 3}
-  scaredDogSprite: {fileID: 21300000, guid: 8b26ddf9241d441bebc61f8961e68708, type: 3}
-  aggressiveDescription: Aggressive dog body language typically features a stiff,
-    rigid, and forward-leaning posture designed to look large and threatening. Key
-    signs include raised hackles (hair on the back), intense staring, bared teeth,
-    and ears that are either pinned back or rigidly forward.
-  pleasedDescription: A happy dog typically displays a loose, wiggly body, often
-    with a "wiggle-butt" motion, relaxed muscles, and a sweeping, low-to-mid-height
-    tail wag. Their eyes are soft and almond-shaped, their mouth is often open in
-    a "smile" with a relaxed jaw.
-  scaredDescription: Scared dogs typically display body language focused on appearing
-    smaller, hiding, or preparing to escape. Key indicators include a tucked tail,
-    trembling, cowering, lowered head, and ears pinned back.
+  dogImage1: {fileID: 486046441}
+  dogImage2: {fileID: 1787034311}
+  aggressiveDogSprite1: {fileID: 0}
+  aggressiveDogSprite2: {fileID: 0}
+  pleasedDogSprite1: {fileID: 0}
+  pleasedDogSprite2: {fileID: 0}
+  scaredDogSprite1: {fileID: 0}
+  scaredDogSprite2: {fileID: 0}
+  aggressiveDescription: Aggressive dogs display warning signs such as a stiff, forward-leaning
+    posture, raised hackles, intense staring, bared teeth, and ears pinned back or
+    rigidly forward. Do not attempt to pet or approach an aggressive dog. Remain
+    calm, avoid direct eye contact, and slowly give the dog space. Sudden movements
+    or attempts to touch the dog could provoke a bite.
+  pleasedDescription: A happy dog typically has a loose, wiggly body, a sweeping
+    tail wag, soft eyes, and an open, relaxed mouth that may look like a smile. This
+    is usually a good time to interact. Approach calmly and allow the dog to come
+    to you first. Gentle petting on the chest, shoulders, or side is generally well
+    received.
+  scaredDescription: A scared dog may crouch low, tuck its tail, flatten its ears,
+    avoid eye contact, or tremble. Some frightened dogs may also yawn, lick their
+    lips, or try to hide. Avoid petting or cornering a scared dog. Give it plenty
+    of space, speak softly, and allow it to approach you when it feels safe and comfortable.
 --- !u!224 &1733299996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2916,6 +2928,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1787034309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1787034310}
+  - component: {fileID: 1787034312}
+  - component: {fileID: 1787034311}
+  m_Layer: 0
+  m_Name: DogImage2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1787034310
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787034309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.779988, y: 2.859819, z: 4.779988}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 950017501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -639, y: -200}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1787034311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787034309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1787034312
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787034309}
+  m_CullTransparentMesh: 1
 --- !u!1 &1873982050
 GameObject:
   m_ObjectHideFlags: 0

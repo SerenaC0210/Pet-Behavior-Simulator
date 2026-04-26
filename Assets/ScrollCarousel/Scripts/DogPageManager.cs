@@ -12,11 +12,21 @@ public class DogPageManager : MonoBehaviour
 
     public TMP_Text dogNameText;
     public TMP_Text dogDescriptionText;
-    public Image dogImage;
 
-    public Sprite aggressiveDogSprite;
-    public Sprite pleasedDogSprite;
-    public Sprite scaredDogSprite;
+    public Image dogImage1;
+    public Image dogImage2;
+
+    [Header("Aggressive Dog")]
+    public Sprite aggressiveDogSprite1;
+    public Sprite aggressiveDogSprite2;
+
+    [Header("Pleased Dog")]
+    public Sprite pleasedDogSprite1;
+    public Sprite pleasedDogSprite2;
+
+    [Header("Scared Dog")]
+    public Sprite scaredDogSprite1;
+    public Sprite scaredDogSprite2;
 
     [TextArea] public string aggressiveDescription;
     [TextArea] public string pleasedDescription;
@@ -40,25 +50,34 @@ public class DogPageManager : MonoBehaviour
     public void ShowAggressiveDog()
     {
         ShowInfoPanel();
+
         dogNameText.text = "Aggressive Dog";
         dogDescriptionText.text = aggressiveDescription;
-        dogImage.sprite = aggressiveDogSprite;
+
+        dogImage1.sprite = aggressiveDogSprite1;
+        dogImage2.sprite = aggressiveDogSprite2;
     }
 
     public void ShowPleasedDog()
     {
         ShowInfoPanel();
+
         dogNameText.text = "Pleased Dog";
         dogDescriptionText.text = pleasedDescription;
-        dogImage.sprite = pleasedDogSprite;
+
+        dogImage1.sprite = pleasedDogSprite1;
+        dogImage2.sprite = pleasedDogSprite2;
     }
 
     public void ShowScaredDog()
     {
         ShowInfoPanel();
+
         dogNameText.text = "Scared Dog";
         dogDescriptionText.text = scaredDescription;
-        dogImage.sprite = scaredDogSprite;
+
+        dogImage1.sprite = scaredDogSprite1;
+        dogImage2.sprite = scaredDogSprite2;
     }
 
     public void BackToMenu()
