@@ -16,19 +16,19 @@ public class KeybindAnimations : MonoBehaviour
     {
         if (Keyboard.current.digit0Key.wasPressedThisFrame)
         {
-            triggerDogAnimation("base body", 0.4f, 0);
+            triggerCatAnimation("tail_tuck", 0.4f, 1);
         }
         else if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
-            triggerDogAnimation("base tuck", 0.4f, 0);
+            triggerDogAnimation("ears back", 0.4f, 2);
         }
         else if (Keyboard.current.digit2Key.wasPressedThisFrame)
         {
-            triggerCatAnimation("tail_up_relaxed", 0.4f, 1);
+            triggerDogAnimation("tail wag", 0.4f, 1);
         }
         else if (Keyboard.current.digit3Key.wasPressedThisFrame)
         {
-            triggerCatAnimation("base_back", 0.4f, 0);
+            triggerDogAnimation("tail base", 0.4f, 1);
         }
 
         if (Keyboard.current.digit4Key.wasPressedThisFrame)
