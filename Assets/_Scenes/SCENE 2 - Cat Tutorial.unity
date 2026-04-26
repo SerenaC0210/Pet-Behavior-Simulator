@@ -3111,7 +3111,6 @@ MonoBehaviour:
   background: {fileID: 1936454674}
   title: {fileID: 1796887204}
   carousel: {fileID: 1176774815}
-  footer: {fileID: 0}
   catInfoPanel: {fileID: 523200192}
   catNameText: {fileID: 585736350}
   catDescriptionText: {fileID: 1760388682}
@@ -3259,7 +3258,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -284.86954, w: 0}
+  m_margin: {x: 0, y: 0, z: -979.86597, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

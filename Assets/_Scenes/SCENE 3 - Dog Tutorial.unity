@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -389.09656, w: 0}
+  m_margin: {x: 0, y: 0, z: -947.24097, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2883,7 +2883,6 @@ MonoBehaviour:
   background: {fileID: 629433156}
   title: {fileID: 526729802}
   carousel: {fileID: 778389773}
-  footer: {fileID: 0}
   dogInfoPanel: {fileID: 950017500}
   dogNameText: {fileID: 1612729412}
   dogDescriptionText: {fileID: 600870707}
