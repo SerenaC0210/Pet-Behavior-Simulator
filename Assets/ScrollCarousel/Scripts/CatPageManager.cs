@@ -7,7 +7,6 @@ public class CatPageManager : MonoBehaviour
     public GameObject background;
     public GameObject title;
     public GameObject carousel;
-    public GameObject footer;
     public GameObject catInfoPanel;
 
     public TMP_Text catNameText;
@@ -42,7 +41,6 @@ public class CatPageManager : MonoBehaviour
         background.SetActive(false);
         title.SetActive(false);
         carousel.SetActive(false);
-        footer.SetActive(false);
 
         catInfoPanel.SetActive(true);
     }
@@ -87,6 +85,5 @@ public class CatPageManager : MonoBehaviour
         background.SetActive(true);
         title.SetActive(true);
         carousel.SetActive(true);
-        footer.SetActive(true);
     }
 }

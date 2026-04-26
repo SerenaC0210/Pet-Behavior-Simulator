@@ -7,7 +7,6 @@ public class DogPageManager : MonoBehaviour
     public GameObject background;
     public GameObject title;
     public GameObject carousel;
-    public GameObject footer;
     public GameObject dogInfoPanel;
 
     public TMP_Text dogNameText;
@@ -42,7 +41,6 @@ public class DogPageManager : MonoBehaviour
         background.SetActive(false);
         title.SetActive(false);
         carousel.SetActive(false);
-        footer.SetActive(false);
 
         dogInfoPanel.SetActive(true);
     }
@@ -87,6 +85,5 @@ public class DogPageManager : MonoBehaviour
         background.SetActive(true);
         title.SetActive(true);
         carousel.SetActive(true);
-        footer.SetActive(true);
     }
 }
