@@ -53,7 +53,7 @@ public class TriggerCatAnimations : MonoBehaviour
 
     private void updateTimerText()
     {
-        int seconds = Mathf.CeilToInt(timeRemaining);
+        int seconds = Mathf.CeilToInt(Mathf.Max(timeRemaining, 0));
         timerText.text = "Session time: " + seconds.ToString(); 
     }
 
@@ -131,10 +131,6 @@ public class TriggerCatAnimations : MonoBehaviour
         startTimer();
     }
 
-    public void setIsPet()
-    {
-        isPet = true;
-    }
 
     public void setSessionText()
     {
@@ -142,6 +138,8 @@ public class TriggerCatAnimations : MonoBehaviour
     }
     public void detectTouch()
     {
+        if (isPet) return;
+        if (!timerRunning || timeRemaining <= 0) return;
         stopTimer();
         timerText.text = "Session time: 0";
 
@@ -174,6 +172,7 @@ public class TriggerCatAnimations : MonoBehaviour
         responseText.text = message;
         contButton.interactable = true;
         sessionUI.SetActive(true);
+        updateTimerText();
     }
 
     public void RestartSessions()
