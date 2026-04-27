@@ -150,29 +150,19 @@ public class TriggerDogAnimations : MonoBehaviour
 
     public void detectTouch()
     {
-        if (isPet)
-        {
-            stopTimer();
-            timerText.text = "Session time: 0";
-            contButton.interactable = true;
-            return;
-        }
-
-        isPet = true;
         stopTimer();
-        
+        timerText.text = "Session time: 0";
 
         string message = "";
+
         if (lastMood == DogMood.Alert)
         {
-        message = "A dog's tail going up and ears pointing straight up indicates the dog is alert. This is a neutral state, and depending on what happens, the dog can become happy, anxious, etc.";
+            message = "A dog's tail going up and ears pointing straight up indicates the dog is alert. This is a neutral state, and depending on what happens, the dog can become happy, anxious, etc.";
         }
         else if (lastMood == DogMood.Relaxed)
         {
             message = "The dog is relaxed, indicated by its softer body language. A tail wag can indicate many emotions, but in combination with other body language, the tail indicates relaxation.";
-
         }
-
         else if (lastMood == DogMood.Scared)
         {
             if (timeRemaining <= 0 || timerRunning == false)
@@ -184,8 +174,9 @@ public class TriggerDogAnimations : MonoBehaviour
                 message = "A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
             }
         }
-        contButton.interactable = true;
+
         responseText.text = message;
+        contButton.interactable = true;
         sessionUI.SetActive(true);
     }
 
