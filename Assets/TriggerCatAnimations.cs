@@ -150,20 +150,20 @@ public class TriggerCatAnimations : MonoBehaviour
         if (lastMood == CatMood.Irritated)
         {
             message = isPet
-                ? "You shouldn't pet an irritated cat. Flattened ears and a swishing tail mean it's annoyed."
-                : "Correct! Flattened ears and a swishing tail mean the cat is irritated—don't pet it.";
+                ? "A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it."
+                : "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
         }
         else if (lastMood == CatMood.Relaxed)
         {
             message = isPet
-                ? "Correct! The cat is relaxed, so petting is fine."
-                : "The cat is relaxed—you could have petted it.";
+                ? "Correct! A tail that's up, but not completely rigid, indicates the cat is relaxed."
+                : "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!.";
         }
         else if (lastMood == CatMood.Scared)
         {
             message = isPet
-                ? "You shouldn't pet a scared cat. Flattened ears and a tucked tail show fear."
-                : "Correct! The cat is scared—best to avoid touching it.";
+                ? "A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats."
+                : "Correct! Correct! A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. Anxious, scared, or uncomfortable cats shouldn't be pet.";
         }
 
         responseText.text = message;
