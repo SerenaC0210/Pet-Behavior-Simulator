@@ -102,15 +102,16 @@ public class TriggerCatAnimations : MonoBehaviour
             sessionUI.SetActive(false);
             if (catAnimator) catAnimator.gameObject.SetActive(false);
         }
-        else
-        {
-            responseText.text = "Do/don't interact with the cat based on its body language.";
-            StartNextSession();
-        }
-        if (timerRunning)
+        else if (timerRunning)
         {
             contButton.interactable = false;
+            responseText.text = "Do/don't interact with the cat based on its body language.";
         }
+        else
+        {
+            StartNextSession();
+        }
+        
     }
 
     public void StartNextSession()
@@ -127,7 +128,6 @@ public class TriggerCatAnimations : MonoBehaviour
         currentSession++;
         setSessionText();
 
-        Debug.Log($"Session {currentSession} - Mood: {mood}");
         triggerMood(mood);
         startTimer();
     }
