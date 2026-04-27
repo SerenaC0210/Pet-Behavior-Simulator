@@ -146,24 +146,29 @@ public class TriggerCatAnimations : MonoBehaviour
         timerText.text = "Session time: 0";
 
         string message = "";
+        bool correct = false;
 
         if (lastMood == CatMood.Irritated)
         {
-            message = isPet
-                ? "A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it."
-                : "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
+
+            correct = !isPet;
+            message = correct
+                ? "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it."
+                : "A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
         }
         else if (lastMood == CatMood.Relaxed)
         {
-            message = isPet
+            correct = isPet;
+            message = correct
                 ? "Correct! A tail that's up, but not completely rigid, indicates the cat is relaxed."
                 : "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!.";
         }
         else if (lastMood == CatMood.Scared)
         {
-            message = isPet
-                ? "A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats."
-                : "Correct! Correct! A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. Anxious, scared, or uncomfortable cats shouldn't be pet.";
+            correct = !isPet;
+            message = correct
+                ? "Correct! A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. Anxious, scared, or uncomfortable cats shouldn't be pet."
+                : "A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats.";
         }
 
         responseText.text = message;
