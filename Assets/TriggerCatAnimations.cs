@@ -66,6 +66,7 @@ public class TriggerCatAnimations : MonoBehaviour
     private void stopTimer()
     {
         timerRunning = false;
+        timeRemaining = 0;
     }
 
     private void onTimerEnd()
@@ -102,13 +103,11 @@ public class TriggerCatAnimations : MonoBehaviour
             sessionUI.SetActive(false);
             if (catAnimator) catAnimator.gameObject.SetActive(false);
         }
-        else if (timerRunning)
-        {
-            contButton.interactable = false;
-            responseText.text = "Do/don't interact with the cat based on its body language.";
-        }
+       
         else
         {
+            responseText.text = "Do/don't interact with the cat based on its body language.";
+            contButton.interactable = false;
             StartNextSession();
         }
         
