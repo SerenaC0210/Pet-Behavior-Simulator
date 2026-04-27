@@ -141,52 +141,34 @@ public class TriggerCatAnimations : MonoBehaviour
     {
         sessionText.text = "Session " + currentSession;
     }
-
     public void detectTouch()
     {
-        if (isPet)
-        {
-            stopTimer();
-            timerText.text = "Session time: 0";
-            contButton.interactable = true;
-            return;
-        }
-
-        isPet = true;
         stopTimer();
+        timerText.text = "Session time: 0";
 
         string message = "";
+
         if (lastMood == CatMood.Irritated)
         {
-            if (timeRemaining <= 0 || timerRunning == false)
-            {
-                message = "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
-            }
-            else
-            {
-                message = "A cat's ears flattening indicates fear/anger. A swishing tail also indicates a cat is irritated, so you shouldn't pet it.";
-                timerText.text = "Session time: 0";
-            }
+            message = isPet
+                ? "You shouldn't pet an irritated cat. Flattened ears and a swishing tail mean it's annoyed."
+                : "Correct! Flattened ears and a swishing tail mean the cat is irritated—don't pet it.";
         }
-        else if (lastMood == CatMood.Relaxed) {
-            message = "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!";
-        
+        else if (lastMood == CatMood.Relaxed)
+        {
+            message = isPet
+                ? "Correct! The cat is relaxed, so petting is fine."
+                : "The cat is relaxed—you could have petted it.";
         }
-
         else if (lastMood == CatMood.Scared)
         {
-            if (timeRemaining <= 0 || timerRunning == false)
-            {
-                message = "Correct! A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats.";
-            }
-            else
-            {
-                message = "A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats.";
-            }
+            message = isPet
+                ? "You shouldn't pet a scared cat. Flattened ears and a tucked tail show fear."
+                : "Correct! The cat is scared—best to avoid touching it.";
         }
 
-        contButton.interactable = true;
         responseText.text = message;
+        contButton.interactable = true;
         sessionUI.SetActive(true);
     }
 
