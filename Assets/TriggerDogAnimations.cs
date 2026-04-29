@@ -22,6 +22,9 @@ public class TriggerDogAnimations : MonoBehaviour
     public Text sessionText;
     private DogMood lastMood;
     public Button contButton;
+    private bool sessionStarted = false;
+    private bool sessionEnded = false;
+
 
     public Text timerText;
     public float sessionDuration = 8f;
@@ -44,6 +47,8 @@ public class TriggerDogAnimations : MonoBehaviour
     }
     void Update()
     {
+        if (!sessionStarted || sessionEnded) return;
+
         if (timerRunning)
         {
             timeRemaining -= Time.deltaTime;
@@ -52,7 +57,9 @@ public class TriggerDogAnimations : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerRunning = false;
-                onTimerEnd();
+                sessionEnded = true;
+
+                if (!isPet) displayMessage();
             }
 
             updateTimerText();
@@ -61,6 +68,8 @@ public class TriggerDogAnimations : MonoBehaviour
 
     private void updateTimerText()
     {
+        if (!sessionStarted) return;
+
         int seconds = Mathf.CeilToInt(timeRemaining);
         timerText.text = "Session time: " + seconds.ToString();
     }
@@ -74,11 +83,6 @@ public class TriggerDogAnimations : MonoBehaviour
     private void stopTimer()
     {
         timerRunning = false;
-    }
-
-    private void onTimerEnd()
-    {
-        detectTouch();
     }
 
     private DogMood[] generateMoods()
@@ -113,34 +117,47 @@ public class TriggerDogAnimations : MonoBehaviour
         else
         {
             responseText.text = "Do/don't interact with the dog based on its body language.";
+            isPet = false;
             StartNextSession();
-        }
-        if (timerRunning) {
             contButton.interactable = false;
         }
     }
 
     public void StartNextSession()
     {
+        sessionStarted = true;
+        sessionEnded = false;
         isPet = false;
+
         if (currentSession >= currMoods.Length)
         {
             responseText.text = "All sessions complete!";
             return;
         }
 
-        DogMood mood = currMoods[currentSession];
         lastMood = currMoods[currentSession];
+        DogMood mood = currMoods[currentSession];
+
         currentSession++;
         setSessionText();
 
         triggerMood(mood);
         startTimer();
     }
-
     public void setIsPet()
     {
+        Debug.Log("PET CALLED - timerRunning: " + timerRunning);
+        if (sessionEnded || !sessionStarted) return;
+
         isPet = true;
+        timerRunning = false;
+        sessionEnded = true;
+        timeRemaining = 0;
+
+        timerText.text = "Session time: 0";
+        Debug.Log("Calling displayMessage from setIsPet");
+        displayMessage();
+        Debug.Log("displayMessage called");
     }
 
     public void setSessionText()
@@ -148,14 +165,19 @@ public class TriggerDogAnimations : MonoBehaviour
         sessionText.text = "Session " + currentSession;
     }
 
-    public void detectTouch()
+
+    public void displayMessage()
     {
-        stopTimer();
-        timerText.text = "Session time: 0";
+        Debug.Log("inside display message. session is " + currentSession + " and lastmood was " + lastMood + ". timerRunning is " + timerRunning);
+        updateTimerText();
 
         string message = "";
+        contButton.interactable = true;
+
+        // disable interaction
 
         if (lastMood == DogMood.Alert)
+
         {
             message = "A dog's tail going up and ears pointing straight up indicates the dog is alert. This is a neutral state, and depending on what happens, the dog can become happy, anxious, etc.";
         }
@@ -165,19 +187,13 @@ public class TriggerDogAnimations : MonoBehaviour
         }
         else if (lastMood == DogMood.Scared)
         {
-            if (timeRemaining <= 0 || timerRunning == false)
-            {
-                message = "Correct! A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
-            }
-            else
-            {
-                message = "A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
-            }
+            message = isPet
+                ? "A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs."
+                : "Correct! A dog's ears flattening, its tail tucking, and its crouched stance indicates anxiety or fear. Avoid petting anxious/scared dogs.";
         }
-
         responseText.text = message;
-        contButton.interactable = true;
-        sessionUI.SetActive(true);
+        sessionStarted = false;
+        sessionEnded = true;
     }
 
     public void RestartSessions()
@@ -186,6 +202,7 @@ public class TriggerDogAnimations : MonoBehaviour
         currentSession = 0;
         currMoods = generateMoods();
         resetAnimation();
+        sessionStarted = false;
     }
 
     private void triggerAlert()
