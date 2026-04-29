@@ -22,6 +22,8 @@ public class TriggerCatAnimations : MonoBehaviour
     public Text sessionText;
     private CatMood lastMood;
     public Button contButton;
+    private bool sessionStarted = false;
+    private bool sessionEnded = false;
 
     public Text timerText;
     public float sessionDuration = 10f;
@@ -36,25 +38,29 @@ public class TriggerCatAnimations : MonoBehaviour
 
     private void Update()
     {
-        if (timerRunning)
+        if (!sessionStarted || sessionEnded) return;
+
+        if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
 
-            if (timeRemaining <= 0)
-            {
-                timeRemaining = 0;
-                timerRunning = false;
-                onTimerEnd();
-            }
-
-            updateTimerText();
         }
+        else
+        {
+            timeRemaining = 0;
+            timerRunning = false;
+            sessionEnded = true;
+            if (!isPet) displayMessage();
+        }
+        updateTimerText();
     }
 
     private void updateTimerText()
     {
-        int seconds = Mathf.CeilToInt(Mathf.Max(timeRemaining, 0));
-        timerText.text = "Session time: " + seconds.ToString(); 
+        if (!sessionStarted) return;
+
+        int seconds = Mathf.CeilToInt(timeRemaining);
+        timerText.text = "Session time: " + seconds.ToString();
     }
 
     private void startTimer()
@@ -69,10 +75,6 @@ public class TriggerCatAnimations : MonoBehaviour
         timeRemaining = 0;
     }
 
-    private void onTimerEnd()
-    {
-        detectTouch();
-    }
 
     private CatMood[] generateMoods()
     {
@@ -108,6 +110,7 @@ public class TriggerCatAnimations : MonoBehaviour
         {
             responseText.text = "Do/don't interact with the cat based on its body language.";
             contButton.interactable = false;
+            isPet = false;
             StartNextSession();
         }
         
@@ -115,6 +118,8 @@ public class TriggerCatAnimations : MonoBehaviour
 
     public void StartNextSession()
     {
+        sessionStarted = true;
+        sessionEnded = false;
         isPet = false;
         if (currentSession >= currMoods.Length)
         {
@@ -122,8 +127,9 @@ public class TriggerCatAnimations : MonoBehaviour
             return;
         }
 
-        CatMood mood = currMoods[currentSession];
         lastMood = currMoods[currentSession];
+        CatMood mood = currMoods[currentSession];
+        
         currentSession++;
         setSessionText();
 
@@ -136,51 +142,54 @@ public class TriggerCatAnimations : MonoBehaviour
     {
         sessionText.text = "Session " + currentSession;
     }
-    public void detectTouch()
+
+    public void setIsPet()
     {
-        if (isPet) return;
-        if (!timerRunning || timeRemaining <= 0) return;
-        stopTimer();
+        Debug.Log("Pet is called");
+        if (sessionEnded || !sessionStarted) return;
+
+        isPet = true;
+        sessionEnded = true;
+        timeRemaining = 0;
         timerText.text = "Session time: 0";
+        displayMessage();
+    }
+
+    public void displayMessage()
+    {
+        Debug.Log("inside display message. session is " + currentSession + " and lastmood was " + lastMood + ". timerRunning is " + timerRunning);
+        updateTimerText();
 
         string message = "";
-        bool correct = false;
+        contButton.interactable = true;
 
         if (lastMood == CatMood.Irritated)
-        {
 
-            correct = !isPet;
-            message = correct
-                ? "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it."
-                : "A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
+        {
+            message = isPet
+                ? "A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it."
+                : "Correct! A cat's ears flattening indicates fear/anger. A swishing tail indicates also a cat is irritated, so you shouldn't pet it.";
         }
         else if (lastMood == CatMood.Relaxed)
         {
-            correct = isPet;
-            message = correct
-                ? "Correct! A tail that's up, but not completely rigid, indicates the cat is relaxed."
-                : "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!.";
+            message = "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!.";
         }
         else if (lastMood == CatMood.Scared)
         {
-            correct = !isPet;
-            message = correct
-                ? "Correct! A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. Anxious, scared, or uncomfortable cats shouldn't be pet."
-                : "A cat's ears flattening indicates fear/anger. A tucked tail indicates anxiety. You should avoid petting anxious, scared, or uncomfortable cats.";
+            message = isPet
+                ? "A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!."
+                : "Correct! A tail that's up, but not completely rigid, indicates the cat is relaxed. You may pet it if you'd like!.";
         }
-
         responseText.text = message;
-        contButton.interactable = true;
-        sessionUI.SetActive(true);
-        updateTimerText();
+        sessionStarted = false;
+        sessionEnded = true;
     }
 
     public void RestartSessions()
     {
         isPet = false;
         currentSession = 0;
-        currMoods = generateMoods();
-        resetAnimation();
+        sessionStarted = false;
     }
 
     private void triggerAnimation(string newState, float crossfade = 0.4f, int layer = 0)

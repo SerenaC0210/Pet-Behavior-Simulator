@@ -7,6 +7,8 @@ public class StartSessions : MonoBehaviour
     public GameObject animalSelectUI;
     public GameObject catSessionUI;
     public GameObject dogSessionUI;
+    public TriggerDogAnimations triggerDogAnimations;
+    public TriggerCatAnimations triggerCatAnimations;
     void Start()
     {
         animalSelectUI.SetActive(true);
@@ -33,13 +35,19 @@ public class StartSessions : MonoBehaviour
         catSessionUI.SetActive(false);
         dogSessionUI.SetActive(true);
     }
-    
+
     public void restart()
     {
         animalSelectUI.SetActive(true);
         catSessionUI.SetActive(false);
         dogSessionUI.SetActive(false);
-        if (catAnimator) catAnimator.gameObject.SetActive(false);
-        if (dogAnimator) dogAnimator.gameObject.SetActive(false);
+        if (catAnimator) {
+            catAnimator.gameObject.SetActive(false);
+            triggerCatAnimations.RestartSessions();
+        }
+        if (dogAnimator) {
+            dogAnimator.gameObject.SetActive(false);
+            triggerDogAnimations.RestartSessions();
+        }
     }
 }

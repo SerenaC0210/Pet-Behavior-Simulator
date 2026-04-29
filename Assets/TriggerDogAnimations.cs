@@ -49,21 +49,19 @@ public class TriggerDogAnimations : MonoBehaviour
     {
         if (!sessionStarted || sessionEnded) return;
 
-        if (timerRunning)
+        if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
 
-            if (timeRemaining <= 0)
-            {
-                timeRemaining = 0;
-                timerRunning = false;
-                sessionEnded = true;
-
-                if (!isPet) displayMessage();
-            }
-
-            updateTimerText();
         }
+        else
+        {
+            timeRemaining = 0;
+            timerRunning = false;
+            sessionEnded = true;
+            displayMessage();
+        }
+        updateTimerText();
     }
 
     private void updateTimerText()
@@ -132,6 +130,7 @@ public class TriggerDogAnimations : MonoBehaviour
         if (currentSession >= currMoods.Length)
         {
             responseText.text = "All sessions complete!";
+            RestartSessions();
             return;
         }
 
@@ -146,18 +145,15 @@ public class TriggerDogAnimations : MonoBehaviour
     }
     public void setIsPet()
     {
-        Debug.Log("PET CALLED - timerRunning: " + timerRunning);
+        isPet = true;
+        Debug.Log($"Pet is called and isPet is {isPet}");
         if (sessionEnded || !sessionStarted) return;
 
-        isPet = true;
-        timerRunning = false;
+        
         sessionEnded = true;
         timeRemaining = 0;
-
         timerText.text = "Session time: 0";
-        Debug.Log("Calling displayMessage from setIsPet");
         displayMessage();
-        Debug.Log("displayMessage called");
     }
 
     public void setSessionText()
@@ -173,8 +169,6 @@ public class TriggerDogAnimations : MonoBehaviour
 
         string message = "";
         contButton.interactable = true;
-
-        // disable interaction
 
         if (lastMood == DogMood.Alert)
 
@@ -200,8 +194,6 @@ public class TriggerDogAnimations : MonoBehaviour
     {
         isPet = false;
         currentSession = 0;
-        currMoods = generateMoods();
-        resetAnimation();
         sessionStarted = false;
     }
 

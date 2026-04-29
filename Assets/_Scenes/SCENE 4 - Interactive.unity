@@ -3847,9 +3847,9 @@ RectTransform:
   - {fileID: 420481692}
   m_Father: {fileID: 8444508584531495229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 56.699997, y: -170.49}
   m_SizeDelta: {x: 170, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &787435485
@@ -3869,6 +3869,8 @@ MonoBehaviour:
   animalSelectUI: {fileID: 942473293}
   catSessionUI: {fileID: 1612718220}
   dogSessionUI: {fileID: 1556083665}
+  triggerDogAnimations: {fileID: 9003410763613777462}
+  triggerCatAnimations: {fileID: 6397291155147656356}
 --- !u!114 &787435486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,6 +4806,8 @@ MonoBehaviour:
   animalSelectUI: {fileID: 942473293}
   catSessionUI: {fileID: 1612718220}
   dogSessionUI: {fileID: 1556083665}
+  triggerDogAnimations: {fileID: 9003410763613777462}
+  triggerCatAnimations: {fileID: 6397291155147656356}
 --- !u!1 &947535005
 GameObject:
   m_ObjectHideFlags: 0
@@ -6472,6 +6476,8 @@ MonoBehaviour:
   animalSelectUI: {fileID: 942473293}
   catSessionUI: {fileID: 1612718220}
   dogSessionUI: {fileID: 1556083665}
+  triggerDogAnimations: {fileID: 0}
+  triggerCatAnimations: {fileID: 0}
 --- !u!114 &1322694477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9781,6 +9787,10 @@ PrefabInstance:
       value: Dog_001
       objectReference: {fileID: 0}
     - target: {fileID: 4221086978289306970, guid: 6563792b606b2f44c89990a1676cd017, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221086978289306970, guid: 6563792b606b2f44c89990a1676cd017, type: 3}
       propertyPath: sessionUI
       value: 
       objectReference: {fileID: 1556083665}
@@ -9804,6 +9814,10 @@ PrefabInstance:
       propertyPath: animalSelectUI
       value: 
       objectReference: {fileID: 942473293}
+    - target: {fileID: 4221086978289306970, guid: 6563792b606b2f44c89990a1676cd017, type: 3}
+      propertyPath: dogInteractable
+      value: 
+      objectReference: {fileID: 9003410763613777467}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9892,6 +9906,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6397291155147656356}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setIsPet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setIsPet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TriggerCatAnimations, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883020241084246817, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9902,6 +9952,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8001682379587350558, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
   m_PrefabInstance: {fileID: 3815260828534539149}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6397291155147656356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2846217666683209869, guid: 6fa6bdc180e2f5b4b9a9ef0b654ebf64, type: 3}
+  m_PrefabInstance: {fileID: 3815260828534539149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780b6ec143fdd98489d00317f529efeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8444508584531495228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9975,7 +10036,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5676626329290779685, guid: 2cffcabdcd6971745b2d7406b28aa484, type: 3}
+      propertyPath: smoothSnapDropdown
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676626329290779685, guid: 2cffcabdcd6971745b2d7406b28aa484, type: 3}
       propertyPath: teleportationToggle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676626329290779685, guid: 2cffcabdcd6971745b2d7406b28aa484, type: 3}
+      propertyPath: continuousMoveToggle
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5817199356934647162, guid: 2cffcabdcd6971745b2d7406b28aa484, type: 3}
@@ -10276,10 +10345,13 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9003410763613777462}
         m_TargetAssemblyTypeName: TriggerDogAnimations, Assembly-CSharp
-        m_MethodName: detectTouch
+        m_MethodName: setIsPet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10289,9 +10361,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
